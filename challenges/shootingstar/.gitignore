@@ -1,0 +1,5 @@
+core
+.gdb_history
+ghidra/
+.idea/
+__pycache__/
