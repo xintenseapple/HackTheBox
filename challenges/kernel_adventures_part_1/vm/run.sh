@@ -8,6 +8,6 @@ qemu-system-x86_64 \
     -monitor /dev/null \
     -initrd ./rootfs.cpio.gz  \
     -cpu qemu64 \
-    -smp cores=2
-    -device e1000,netdev=net0
-    -netdev user,id=net0,hostfwd=tcp:5555-:5555
+    -smp cores=2 \
+    -device e1000,netdev=net0 \
+    -netdev user,id=net0,hostfwd=tcp:5555-:5555 \
