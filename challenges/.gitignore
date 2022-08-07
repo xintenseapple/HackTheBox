@@ -3,3 +3,4 @@
 **/ghidra/
 **/.idea/
 **/__pycache__/
+**/cmake-build/
