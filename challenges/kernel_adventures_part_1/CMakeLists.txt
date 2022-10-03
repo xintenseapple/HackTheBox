@@ -1,3 +1,3 @@
 project(KernelAdventuresPt1)
 
-add_executable(exploit exploit.c exploit.c)
+add_executable(exploit exploit.c)
