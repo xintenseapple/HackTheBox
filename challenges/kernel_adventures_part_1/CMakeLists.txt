@@ -6,4 +6,4 @@ set(BUILD_SHARED_LIBS OFF)
 set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 add_executable(exploit exploit.c)
-add_executable(hash hash.c)
+add_executable(dump_hashes dump_hashes.c)

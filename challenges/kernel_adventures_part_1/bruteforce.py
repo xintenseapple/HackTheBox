@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser(prog="bruteforce",
 parser.add_argument("hash", type=int)
 args = parser.parse_args()
 
-CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+CHARACTERS = "abcdefghijklmnopqrstuvwxyz"
 
 
 def generate_password(length):
@@ -29,11 +29,14 @@ def check_hash(password):
     return None
 
 
-with multiprocessing.Pool(8) as p:
-    for current_length in range(4, 12):
+with multiprocessing.Pool(6) as p:
+    for current_length in range(5, 9):
         print(f"Working on length: {current_length}")
-        results = p.map(check_hash, generate_password(current_length))
+        results = p.imap_unordered(check_hash, generate_password(current_length))
 
-        filter(lambda v: v is not None, results)
-
-        print(f"Results: {', '.join(results)}")
+        for result in results:
+            if result is not None:
+                print(f"DISCOVERED VALID PASSWORD: {result}")
+                p.close()
+                exit(1)
+            del result
