@@ -1,0 +1,25 @@
+# Nmap 7.93 scan initiated Thu Dec 22 17:03:46 2022 as: nmap -T5 -A -O -sV -p1-65535 -o nmap.txt 10.10.10.140
+Nmap scan report for 10.10.10.140
+Host is up (0.049s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b6552bd24e8fa3817261379a12f624ec (RSA)
+|   256 2e30007a92f0893059c17756ad51c0ba (ECDSA)
+|_  256 4c50d5f270c5fdc4b2f0bc4220326434 (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Did not follow redirect to http://swagshop.htb/
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Aggressive OS guesses: Linux 3.13 (95%), Linux 3.16 (95%), Linux 3.2 - 4.9 (95%), Linux 4.2 (95%), Linux 3.18 (95%), Linux 4.8 (95%), ASUS RT-N56U WAP (Linux 3.4) (95%), Linux 4.4 (95%), Linux 4.9 (95%), Linux 3.12 (94%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 993/tcp)
+HOP RTT      ADDRESS
+1   48.40 ms 10.10.14.1
+2   48.76 ms 10.10.10.140
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Dec 22 17:05:46 2022 -- 1 IP address (1 host up) scanned in 120.25 seconds

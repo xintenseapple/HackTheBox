@@ -1,8 +1,7 @@
 import argparse
+import itertools
 import multiprocessing
 import subprocess
-
-import itertools
 
 parser = argparse.ArgumentParser(prog="bruteforce",
                                  description="Hash brute forcer for HTB Kernel Adventures Pt 1.")
