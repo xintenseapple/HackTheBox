@@ -14,18 +14,17 @@ def start(exe=None, gdb_script=None, argv=None, *a, **kw):
     else:
         context.log_level = 'info'
 
-    if args.GDB:  # Set GDB script below
-        if exe is None:
-            raise ValueError("exe must be passed if running process locally.")
-
-        return gdb.debug([exe] + argv, gdbscript=gdb_script, *a, **kw)
-    elif args.REMOTE:  # ('server', 'port')
+    if args.REMOTE:  # ('server', 'port')
         return remote(sys.argv[1], int(sys.argv[2]), *a, **kw)
-    else:  # Run locally
+    else:
         if exe is None:
             raise ValueError("exe must be passed if running process locally.")
 
-        return process([exe] + argv, *a, **kw)
+        if args.GDB:  # Set GDB script below
+            return gdb.debug([exe] + argv, gdbscript=gdb_script, *a, **kw)
+
+        else:  # Run locally
+            return process([exe] + argv, *a, **kw)
 
 
 def get_symbol_offset(libc_version, symbol):

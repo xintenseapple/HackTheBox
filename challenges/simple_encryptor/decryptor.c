@@ -5,26 +5,24 @@
 #include <unistd.h>
 #include <stdint.h>
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     // Handle args
     if (argc < 2) {
         printf("Missing argument [encrypted file].\n");
         printf("Usage: decryptor [encrypted file] [output file]\n");
         return 1;
-    }
-    else if (argc < 3) {
+    } else if (argc < 3) {
         printf("Missing argument [output file].\n");
         printf("Usage: decryptor [encrypted file] [output file]\n");
         return 1;
-    }
-    else if (argc > 3) {
+    } else if (argc > 3) {
         printf("Too many arguments.\n");
         printf("Usage: decryptor [encrypted file] [output file]\n");
         return 2;
     }
 
-    char* encrypted_filename = argv[1];
-    char* output_filename = argv[2];
+    char *encrypted_filename = argv[1];
+    char *output_filename = argv[2];
 
     int encrypted_fd = open(encrypted_filename, O_RDONLY);
     if (encrypted_fd == -1) {
@@ -62,7 +60,7 @@ int main(int argc, char* argv[]) {
 
         write(output_fd, &unencrypted_byte, 1);
 
-        size = read(encrypted_fd, &encrypted_byte,1 );
+        size = read(encrypted_fd, &encrypted_byte, 1);
     }
 
     printf("Decryption complete.\n");
